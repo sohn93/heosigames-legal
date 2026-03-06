@@ -13,8 +13,26 @@
     <li><a href="./kittyguardians/terms-of-service-en/">Terms of Service (English)</a></li>
     <li><a href="./kittyguardians/terms-of-service-ko/">서비스 이용약관 (한국어)</a></li>
   </ul>
+
   <p>Company: HeosiGames</p>
   <p>Address: Gyeonggi-do, Republic of Korea</p>
-  <p>Support: <a href="mailto:heosigames@gmail.com">heosigames@gmail.com</a></p>
+  <p>
+    Support:
+    <a href="mailto:heosigames@gmail.com?subject=%5BSupport%5D%20HeosiGames%20Inquiry">
+      heosigames@gmail.com
+    </a>
+  </p>
+
+  <button type="button" id="copySupportEmail">Copy email</button>
+  <script>
+    document.getElementById("copySupportEmail").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText("heosigames@gmail.com");
+        alert("Support email copied.");
+      } catch {
+        alert("Copy failed. Email: heosigames@gmail.com");
+      }
+    });
+  </script>
 </body>
 </html>
