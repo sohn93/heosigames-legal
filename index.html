@@ -1,31 +1,172 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HeosiGames Legal</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --page-bg: #f6f1df;
+      --card-bg: rgba(255, 250, 235, 0.9);
+      --ink: #2f3720;
+      --muted: #67704a;
+      --line: rgba(79, 92, 50, 0.18);
+      --accent: #7b8b45;
+      --accent-strong: #596633;
+      --shadow: 0 24px 60px rgba(76, 71, 34, 0.16);
+      font-family: "Segoe UI", "Noto Sans KR", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, rgba(255, 243, 196, 0.9), transparent 42%),
+        linear-gradient(180deg, #f8f5e7 0%, var(--page-bg) 100%);
+    }
+
+    main {
+      width: min(960px, calc(100% - 32px));
+      margin: 32px auto 48px;
+    }
+
+    .hero {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+    }
+
+    .hero img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #d9d1b2;
+    }
+
+    .hero-copy {
+      padding: 28px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+    }
+
+    .intro {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.1rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li + li {
+      margin-top: 10px;
+    }
+
+    a {
+      color: var(--accent-strong);
+    }
+
+    .meta {
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: var(--accent);
+      color: #fffdf2;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--accent-strong);
+    }
+  </style>
 </head>
 <body>
-  <h1>HeosiGames Legal</h1>
-  <ul>
-    <li><a href="./kittyguardians/privacy-policy-en/">Privacy Policy (English)</a></li>
-    <li><a href="./kittyguardians/privacy-policy-ko/">개인정보처리방침 (한국어)</a></li>
-    <li><a href="./kittyguardians/account-deletion-en/">Account Deletion Request (English)</a></li>
-    <li><a href="./kittyguardians/account-deletion-ko/">계정 삭제 요청 (한국어)</a></li>
-    <li><a href="./kittyguardians/terms-of-service-en/">Terms of Service (English)</a></li>
-    <li><a href="./kittyguardians/terms-of-service-ko/">서비스 이용약관 (한국어)</a></li>
-  </ul>
+  <main>
+    <section class="hero">
+      <img
+        src="./assets/kitty-guardians-hero.png"
+        alt="A black cat sitting in a sunny field of flowers."
+      />
+      <div class="hero-copy">
+        <h1>HeosiGames Legal</h1>
+        <p class="intro">
+          Official legal and support hub for HeosiGames titles, including Kitty Guardians.
+        </p>
+      </div>
+    </section>
 
-  <p>Company: HeosiGames</p>
-  <p>Address: Gyeonggi-do, Republic of Korea</p>
-  <p>
-    Support:
-    <a href="mailto:heosigames@gmail.com?subject=%5BSupport%5D%20HeosiGames%20Inquiry">
-      heosigames@gmail.com
-    </a>
-  </p>
+    <section class="grid">
+      <article class="card">
+        <h2>Documents</h2>
+        <ul>
+          <li><a href="./kittyguardians/privacy-policy-en/">Privacy Policy (English)</a></li>
+          <li><a href="./kittyguardians/privacy-policy-ko/">개인정보처리방침 (한국어)</a></li>
+          <li><a href="./kittyguardians/account-deletion-en/">Account Deletion Request (English)</a></li>
+          <li><a href="./kittyguardians/account-deletion-ko/">계정 삭제 요청 (한국어)</a></li>
+          <li><a href="./kittyguardians/terms-of-service-en/">Terms of Service (English)</a></li>
+          <li><a href="./kittyguardians/terms-of-service-ko/">서비스 이용약관 (한국어)</a></li>
+          <li><a href="./app-ads.txt">app-ads.txt</a></li>
+        </ul>
+      </article>
 
-  <button type="button" id="copySupportEmail">Copy email</button>
+      <article class="card">
+        <h2>Contact</h2>
+        <p class="meta">Company: HeosiGames</p>
+        <p class="meta">Address: Gyeonggi-do, Republic of Korea</p>
+        <p class="meta">
+          Support:
+          <a href="mailto:heosigames@gmail.com?subject=%5BSupport%5D%20HeosiGames%20Inquiry">
+            heosigames@gmail.com
+          </a>
+        </p>
+        <button type="button" id="copySupportEmail">Copy email</button>
+      </article>
+    </section>
+  </main>
+
   <script>
     document.getElementById("copySupportEmail").addEventListener("click", async () => {
       try {
