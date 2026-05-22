@@ -5,15 +5,361 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kitty Guardians Drop Rates</title>
   <style>
-    body { font-family: Arial, 'Noto Sans KR', sans-serif; max-width: 880px; margin: 40px auto; padding: 0 18px; line-height: 1.5; }
-    a { color: #1f6feb; }
-    li { margin: 6px 0; }
+    :root {
+      color-scheme: light;
+      --text: #172033;
+      --muted: #667085;
+      --line: #d9e1ec;
+      --surface: #ffffff;
+      --surface-soft: #f4f7fb;
+      --discord: #5865f2;
+      --shadow: 0 14px 34px rgba(21, 34, 55, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--surface-soft);
+      color: var(--text);
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 46px;
+    }
+
+    .masthead {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      padding: 10px 0 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .masthead__kicker {
+      margin: 0 0 8px;
+      color: #31516f;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+
+    .masthead__copy {
+      max-width: 720px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .masthead__actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .discord-link,
+    .home-link {
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      padding: 0 15px;
+      font-weight: 800;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .discord-link {
+      background: var(--discord);
+      color: #ffffff;
+      box-shadow: 0 10px 22px rgba(88, 101, 242, 0.22);
+    }
+
+    .home-link {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: #344054;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .rate-card {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 16px;
+      min-height: 174px;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--accent);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .rate-card__icon {
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--accent) 14%, #ffffff);
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, #ffffff);
+    }
+
+    .rate-card__icon img {
+      max-width: 58px;
+      max-height: 58px;
+      image-rendering: auto;
+      filter: drop-shadow(0 6px 8px rgba(20, 25, 36, 0.18));
+    }
+
+    .rate-card__body {
+      min-width: 0;
+    }
+
+    .rate-card__eyebrow {
+      margin: 0 0 3px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .rate-card h2 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .rate-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .rate-card__actions {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      align-self: end;
+    }
+
+    .rate-card__actions a {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      color: #26364b;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .rate-card__actions a:hover,
+    .home-link:hover {
+      border-color: color-mix(in srgb, var(--accent, #31516f) 55%, var(--line));
+      background: #ffffff;
+    }
+
+    .discord-link:hover {
+      background: #4752c4;
+    }
+
+    .footnote {
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 24px, 1120px);
+        padding-top: 22px;
+      }
+
+      .masthead {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .masthead__actions {
+        justify-content: stretch;
+      }
+
+      .discord-link,
+      .home-link {
+        flex: 1 1 150px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .rate-card {
+        grid-template-columns: 58px minmax(0, 1fr);
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .rate-card__icon {
+        width: 58px;
+        height: 58px;
+      }
+
+      .rate-card__icon img {
+        max-width: 46px;
+        max-height: 46px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Kitty Guardians Drop Rates</h1>
-  <ul>
-    <li>Hero / 영웅: <a href="hero-ko/">KO</a> | <a href="hero-en/">EN</a></li><li>Equipment / 장비: <a href="equipment-ko/">KO</a> | <a href="equipment-en/">EN</a></li><li>Skill / 스킬: <a href="user-skill-ko/">KO</a> | <a href="user-skill-en/">EN</a></li><li>Mine Pickaxe / 곡괭이: <a href="mine-pickaxe-ko/">KO</a> | <a href="mine-pickaxe-en/">EN</a></li><li>Gate Shard / 게이트샤드: <a href="gate-shard-ko/">KO</a> | <a href="gate-shard-en/">EN</a></li><li>Cat Dice / 주사위: <a href="cat-dice-ko/">KO</a> | <a href="cat-dice-en/">EN</a></li>
-  </ul>
+  <main class="page">
+    <header class="masthead">
+      <div>
+        <p class="masthead__kicker">Kitty Guardians 확률 정보 공개</p>
+        <h1>Drop Rates</h1>
+        <p class="masthead__copy">영웅, 장비, 스킬, 곡괭이, 게이트 샤드, 주사위, 컬렉션 드롭 확률표를 언어별로 확인할 수 있습니다.</p>
+      </div>
+      <nav class="masthead__actions" aria-label="External links">
+        <a class="home-link" href="https://heosigames.com/">HeosiGames</a>
+        <a class="discord-link" href="https://discord.gg/Ceq7KMprTj">Discord 커뮤니티</a>
+      </nav>
+    </header>
+
+    <section class="grid" aria-label="Drop rate documents">
+
+    <article class="rate-card" style="--accent: #f97316">
+      <div class="rate-card__icon">
+        <img src="assets/icons/CHR_C_Axe_001-ff5ea97e-21300000.png" alt="" loading="lazy">
+      </div>
+      <div class="rate-card__body">
+        <p class="rate-card__eyebrow">Hero</p>
+        <h2>영웅</h2>
+        <p>영웅 소환에서 등장하는 등급별 세부 확률</p>
+      </div>
+      <div class="rate-card__actions" aria-label="영웅 language links">
+        <a href="hero-ko/">한국어</a>
+        <a href="hero-en/">English</a>
+      </div>
+    </article>
+    <article class="rate-card" style="--accent: #2563eb">
+      <div class="rate-card__icon">
+        <img src="assets/icons/EQ_WEAPON_AXE_EMBER_AXE-facc2b65-n2962332601667948678.png" alt="" loading="lazy">
+      </div>
+      <div class="rate-card__body">
+        <p class="rate-card__eyebrow">Equipment</p>
+        <h2>장비</h2>
+        <p>무기, 방어구, 장신구 등 장비 아이템 획득 확률</p>
+      </div>
+      <div class="rate-card__actions" aria-label="장비 language links">
+        <a href="equipment-ko/">한국어</a>
+        <a href="equipment-en/">English</a>
+      </div>
+    </article>
+    <article class="rate-card" style="--accent: #16a34a">
+      <div class="rate-card__icon">
+        <img src="assets/icons/USK_BLADE_CYCLONE-81b3eb79-21300000.png" alt="" loading="lazy">
+      </div>
+      <div class="rate-card__body">
+        <p class="rate-card__eyebrow">Skill</p>
+        <h2>스킬</h2>
+        <p>스킬 소환 및 등급별 스킬 획득 확률</p>
+      </div>
+      <div class="rate-card__actions" aria-label="스킬 language links">
+        <a href="user-skill-ko/">한국어</a>
+        <a href="user-skill-en/">English</a>
+      </div>
+    </article>
+    <article class="rate-card" style="--accent: #0891b2">
+      <div class="rate-card__icon">
+        <img src="assets/icons/EQ_PICKAXE_AETHERGRIP_BREAKER-ada47a8a-7527649601500768740.png" alt="" loading="lazy">
+      </div>
+      <div class="rate-card__body">
+        <p class="rate-card__eyebrow">Mine Pickaxe</p>
+        <h2>곡괭이</h2>
+        <p>광산 곡괭이 보상 슬롯과 등급별 획득 확률</p>
+      </div>
+      <div class="rate-card__actions" aria-label="곡괭이 language links">
+        <a href="mine-pickaxe-ko/">한국어</a>
+        <a href="mine-pickaxe-en/">English</a>
+      </div>
+    </article>
+    <article class="rate-card" style="--accent: #7c3aed">
+      <div class="rate-card__icon">
+        <img src="assets/icons/GATE_SHARD_ASHBRAMBLE_SHARD-f8710f0e-6103545527687594228.png" alt="" loading="lazy">
+      </div>
+      <div class="rate-card__body">
+        <p class="rate-card__eyebrow">Gate Shard</p>
+        <h2>게이트 샤드</h2>
+        <p>게이트 샤드 보상 슬롯별 세부 획득 확률</p>
+      </div>
+      <div class="rate-card__actions" aria-label="게이트 샤드 language links">
+        <a href="gate-shard-ko/">한국어</a>
+        <a href="gate-shard-en/">English</a>
+      </div>
+    </article>
+    <article class="rate-card" style="--accent: #d97706">
+      <div class="rate-card__icon">
+        <img src="assets/icons/gold_dice-40abf5a7-21300000.png" alt="" loading="lazy">
+      </div>
+      <div class="rate-card__body">
+        <p class="rate-card__eyebrow">Cat Dice</p>
+        <h2>주사위</h2>
+        <p>주사위 눈금별 등장 확률과 보상 정보</p>
+      </div>
+      <div class="rate-card__actions" aria-label="주사위 language links">
+        <a href="cat-dice-ko/">한국어</a>
+        <a href="cat-dice-en/">English</a>
+      </div>
+    </article>
+    <article class="rate-card" style="--accent: #be123c">
+      <div class="rate-card__icon">
+        <img src="assets/icons/COLLECTION_MeleeWeapon_001-baf749b0-21300000.png" alt="" loading="lazy">
+      </div>
+      <div class="rate-card__body">
+        <p class="rate-card__eyebrow">Collection Drop</p>
+        <h2>컬렉션 드롭</h2>
+        <p>일반 스테이지 몬스터 처치 시 컬렉션 아이템 드롭 확률</p>
+      </div>
+      <div class="rate-card__actions" aria-label="컬렉션 드롭 language links">
+        <a href="collection-drop-ko/">한국어</a>
+        <a href="collection-drop-en/">English</a>
+      </div>
+    </article>
+    </section>
+
+    <p class="footnote">Country/language routing in game links Korean users to Korean pages and other regions to English pages.</p>
+  </main>
 </body>
 </html>
