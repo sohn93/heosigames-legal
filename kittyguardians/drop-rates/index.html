@@ -78,8 +78,7 @@
       gap: 10px;
     }
 
-    .discord-link,
-    .home-link {
+    .discord-link {
       display: inline-flex;
       min-height: 42px;
       align-items: center;
@@ -95,12 +94,6 @@
       background: var(--discord);
       color: #ffffff;
       box-shadow: 0 10px 22px rgba(88, 101, 242, 0.22);
-    }
-
-    .home-link {
-      border: 1px solid var(--line);
-      background: var(--surface);
-      color: #344054;
     }
 
     .grid {
@@ -187,8 +180,7 @@
       font-size: 14px;
     }
 
-    .rate-card__actions a:hover,
-    .home-link:hover {
+    .rate-card__actions a:hover {
       border-color: color-mix(in srgb, var(--accent, #31516f) 55%, var(--line));
       background: #ffffff;
     }
@@ -218,8 +210,7 @@
         justify-content: stretch;
       }
 
-      .discord-link,
-      .home-link {
+      .discord-link {
         flex: 1 1 150px;
       }
     }
@@ -247,13 +238,12 @@
   <main class="page">
     <header class="masthead">
       <div>
-        <p class="masthead__kicker">Kitty Guardians 확률 정보 공개</p>
+        <p class="masthead__kicker">Kitty Guardians Drop Rate Disclosure</p>
         <h1>Drop Rates</h1>
-        <p class="masthead__copy">영웅, 장비, 스킬, 곡괭이, 게이트 샤드, 주사위, 컬렉션 드롭 확률표를 언어별로 확인할 수 있습니다.</p>
+        <p class="masthead__copy">Select a category to view the Korean or English drop rate disclosure pages for Kitty Guardians.</p>
       </div>
       <nav class="masthead__actions" aria-label="External links">
-        <a class="home-link" href="https://heosigames.com/">HeosiGames</a>
-        <a class="discord-link" href="https://discord.gg/Ceq7KMprTj">Discord 커뮤니티</a>
+        <a class="discord-link" href="https://discord.gg/Ceq7KMprTj">Discord Community</a>
       </nav>
     </header>
 
@@ -266,7 +256,7 @@
       <div class="rate-card__body">
         <p class="rate-card__eyebrow">Hero</p>
         <h2>영웅</h2>
-        <p>영웅 소환에서 등장하는 등급별 세부 확률</p>
+        <p>Detailed rarity and item rates for hero summons.</p>
       </div>
       <div class="rate-card__actions" aria-label="영웅 language links">
         <a href="hero-ko/">한국어</a>
@@ -280,7 +270,7 @@
       <div class="rate-card__body">
         <p class="rate-card__eyebrow">Equipment</p>
         <h2>장비</h2>
-        <p>무기, 방어구, 장신구 등 장비 아이템 획득 확률</p>
+        <p>Drop rates for weapons, armor, accessories, and other equipment.</p>
       </div>
       <div class="rate-card__actions" aria-label="장비 language links">
         <a href="equipment-ko/">한국어</a>
@@ -294,7 +284,7 @@
       <div class="rate-card__body">
         <p class="rate-card__eyebrow">Skill</p>
         <h2>스킬</h2>
-        <p>스킬 소환 및 등급별 스킬 획득 확률</p>
+        <p>Detailed rarity and item rates for skill summons.</p>
       </div>
       <div class="rate-card__actions" aria-label="스킬 language links">
         <a href="user-skill-ko/">한국어</a>
@@ -308,7 +298,7 @@
       <div class="rate-card__body">
         <p class="rate-card__eyebrow">Mine Pickaxe</p>
         <h2>곡괭이</h2>
-        <p>광산 곡괭이 보상 슬롯과 등급별 획득 확률</p>
+        <p>Reward slot and rarity rates for mine pickaxe draws.</p>
       </div>
       <div class="rate-card__actions" aria-label="곡괭이 language links">
         <a href="mine-pickaxe-ko/">한국어</a>
@@ -321,10 +311,10 @@
       </div>
       <div class="rate-card__body">
         <p class="rate-card__eyebrow">Gate Shard</p>
-        <h2>게이트 샤드</h2>
-        <p>게이트 샤드 보상 슬롯별 세부 획득 확률</p>
+        <h2>게이트 파편</h2>
+        <p>Detailed reward slot rates for gate shard draws.</p>
       </div>
-      <div class="rate-card__actions" aria-label="게이트 샤드 language links">
+      <div class="rate-card__actions" aria-label="게이트 파편 language links">
         <a href="gate-shard-ko/">한국어</a>
         <a href="gate-shard-en/">English</a>
       </div>
@@ -336,7 +326,7 @@
       <div class="rate-card__body">
         <p class="rate-card__eyebrow">Cat Dice</p>
         <h2>주사위</h2>
-        <p>주사위 눈금별 등장 확률과 보상 정보</p>
+        <p>Dice face rates and related reward probabilities.</p>
       </div>
       <div class="rate-card__actions" aria-label="주사위 language links">
         <a href="cat-dice-ko/">한국어</a>
@@ -350,7 +340,7 @@
       <div class="rate-card__body">
         <p class="rate-card__eyebrow">Collection Drop</p>
         <h2>컬렉션 드롭</h2>
-        <p>일반 스테이지 몬스터 처치 시 컬렉션 아이템 드롭 확률</p>
+        <p>Collection item drop rates from normal stage monster defeats.</p>
       </div>
       <div class="rate-card__actions" aria-label="컬렉션 드롭 language links">
         <a href="collection-drop-ko/">한국어</a>
